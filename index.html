@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Aug8 Agency – Pricing Packages</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a1628;
+    --blue: #1e5fbb;
+    --accent: #00c2ff;
+    --font-h: 'Sora', sans-serif;
+    --font-b: 'DM Sans', sans-serif;
+  }
+  body {
+    font-family: var(--font-b);
+    background: #f0f4fa;
+    padding: 60px 20px 80px;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .section-header { text-align: center; margin-bottom: 16px; }
+  .label {
+    display: inline-block;
+    background: #deeeff; color: #1a4a8a;
+    font-family: var(--font-h); font-weight: 700;
+    font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 50px; margin-bottom: 14px;
+  }
+  .section-header h2 {
+    font-family: var(--font-h); font-weight: 800;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    color: var(--navy); margin-bottom: 12px; line-height: 1.15;
+  }
+  .section-header p {
+    font-size: 1rem; color: #6b7a99; max-width: 600px;
+    margin: 0 auto 10px; line-height: 1.7;
+  }
+
+  /* ── Contract toggle ── */
+  .contract-banner {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--navy); color: #fff;
+    font-family: var(--font-h); font-weight: 700; font-size: .82rem;
+    padding: 10px 22px; border-radius: 50px;
+    margin-bottom: 48px; letter-spacing: .04em;
+  }
+  .contract-banner .pill {
+    background: #00c2ff; color: var(--navy);
+    font-size: .72rem; padding: 3px 10px; border-radius: 50px; font-weight: 800;
+  }
+
+  /* ── Grid ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    max-width: 1220px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  /* ── Card ── */
+  .card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(10,22,40,.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s, box-shadow .25s;
+    position: relative;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 56px rgba(10,22,40,.16);
+  }
+  .card.featured {
+    transform: translateY(-12px);
+    box-shadow: 0 24px 60px rgba(10,22,40,.22);
+  }
+  .card.featured:hover { transform: translateY(-20px); }
+
+  /* ── Card header ── */
+  .card-head {
+    padding: 28px 26px 24px;
+    text-align: center;
+    position: relative;
+  }
+  /* Tier colors */
+  .tier-1 .card-head { background: #607d8b; }
+  .tier-2 .card-head { background: #2e9e73; }
+  .tier-3 .card-head { background: #0099cc; }
+  .tier-4 .card-head { background: #e07b1a; }
+
+  .most-popular {
+    position: absolute; top: 0; right: 0;
+    background: #fff; color: #0099cc;
+    font-family: var(--font-h); font-weight: 800;
+    font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 0 0 0 14px;
+  }
+  .tier-3 .most-popular { color: #0099cc; }
+
+  .card-head h3 {
+    font-family: var(--font-h); font-weight: 800;
+    font-size: 1.35rem; color: #fff; text-transform: uppercase;
+    letter-spacing: .04em; line-height: 1.2; margin-bottom: 6px;
+  }
+  .card-head .tagline {
+    font-size: .82rem; color: rgba(255,255,255,.8);
+    line-height: 1.45;
+  }
+
+  /* ── Pricing area ── */
+  .price-block {
+    padding: 20px 26px 18px;
+    background: #f8fafd;
+    border-bottom: 1px solid #e8eef6;
+    text-align: center;
+  }
+  .price-note {
+    font-family: var(--font-h); font-weight: 600;
+    font-size: .72rem; color: #6b7a99;
+    text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px;
+  }
+  .price-main {
+    font-family: var(--font-h); font-weight: 800;
+    font-size: 2.4rem; color: var(--navy); line-height: 1;
+  }
+  .price-main sup { font-size: 1.1rem; vertical-align: top; margin-top: 6px; }
+  .price-main sub { font-size: .9rem; font-weight: 600; color: #6b7a99; }
+  .price-period { font-size: .8rem; color: #6b7a99; margin-top: 4px; margin-bottom: 10px; }
+  .price-divider { height: 1px; background: #e8eef6; margin: 8px 0; }
+  .ad-spend-row {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    font-family: var(--font-h); font-size: .78rem; font-weight: 700;
+    color: #374151; margin-bottom: 6px;
+  }
+  .ad-spend-val { color: #1e5fbb; font-size: .9rem; }
+  .ad-note { font-size: .7rem; color: #9aafca; }
+
+  .total-block {
+    margin-top: 8px;
+    padding: 8px 14px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .total-label { font-family: var(--font-h); font-weight: 700; font-size: .72rem; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .08em; }
+  .total-val { font-family: var(--font-h); font-weight: 800; font-size: 1rem; color: #00c2ff; }
+
+  /* ── CTA button ── */
+  .card-cta-wrap { padding: 18px 26px 0; }
+  .cta-btn {
+    display: block; width: 100%;
+    font-family: var(--font-h); font-weight: 700; font-size: .9rem;
+    padding: 13px 20px; border-radius: 50px; text-align: center;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .tier-1 .cta-btn { background: #607d8b; color: #fff; }
+  .tier-2 .cta-btn { background: #2e9e73; color: #fff; }
+  .tier-3 .cta-btn { background: #0099cc; color: #fff; box-shadow: 0 4px 18px rgba(0,153,204,.4); }
+  .tier-4 .cta-btn { background: #e07b1a; color: #fff; }
+  .cta-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+  /* ── Features list ── */
+  .card-features { padding: 20px 26px 28px; flex: 1; }
+  .features-label {
+    font-family: var(--font-h); font-weight: 700; font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .1em; color: #9aafca;
+    margin-bottom: 14px;
+  }
+  .feat-list { list-style: none; }
+  .feat-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: .875rem; color: #374151; margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .feat-list li .icon {
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .65rem; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+  }
+  .icon-check { background: #dcfce7; color: #16a34a; }
+  .icon-plus  { background: #dbeafe; color: #1e5fbb; font-size: .8rem; }
+  .icon-star  { background: #fef9c3; color: #ca8a04; font-size: .7rem; }
+
+  .section-divider {
+    height: 1px; background: #eef2f8;
+    margin: 10px 0 12px;
+  }
+  .feat-section-title {
+    font-family: var(--font-h); font-weight: 700; font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: #9aafca; margin-bottom: 8px; margin-top: 4px;
+  }
+
+  /* ── Bottom note ── */
+  .bottom-note {
+    max-width: 1220px; margin: 40px auto 0;
+    background: var(--navy); border-radius: 18px;
+    padding: 30px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .bottom-note-left h4 {
+    font-family: var(--font-h); font-weight: 800;
+    font-size: 1.1rem; color: #fff; margin-bottom: 6px;
+  }
+  .bottom-note-left p { font-size: .875rem; color: rgba(255,255,255,.6); line-height: 1.6; }
+  .bottom-note-bullets { display: flex; gap: 24px; flex-wrap: wrap; }
+  .note-bullet {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-h); font-weight: 600; font-size: .8rem;
+    color: rgba(255,255,255,.75);
+  }
+  .note-bullet .dot { width: 8px; height: 8px; border-radius: 50%; background: #00c2ff; flex-shrink: 0; }
+  .note-cta {
+    background: #fff; color: var(--navy);
+    font-family: var(--font-h); font-weight: 800; font-size: .9rem;
+    padding: 13px 28px; border-radius: 50px;
+    text-decoration: none; white-space: nowrap; flex-shrink: 0;
+    transition: all .2s;
+  }
+  .note-cta:hover { background: #00c2ff; }
+
+  /* ── Responsive ── */
+  @media (max-width: 1100px) {
+    .grid { grid-template-columns: repeat(2,1fr); }
+    .card.featured { transform: translateY(0); }
+  }
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .bottom-note { flex-direction: column; text-align: center; }
+    .note-cta { width: 100%; text-align: center; display: block; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section-header">
+  <div class="label">3-Month Growth Contract</div>
+  <h2>Choose Your Practice Growth Package</h2>
+  <p>Every plan is a <strong>3-month commitment</strong> — enough time to build momentum, generate results, and prove ROI. All plans include our signature <strong>⚡ 5-Minute Lead Alert System</strong>.</p>
+  <div style="margin-top:16px">
+    <div class="contract-banner">
+      <span>📋 3-Month Minimum Contract</span>
+      <span class="pill">Renews Monthly After</span>
+      <span>· Ad Spend Billed Separately</span>
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+
+  <!-- ══ CARD 1: PRACTICE LAUNCH ══ -->
+  <div class="card tier-1">
+    <div class="card-head">
+      <h3>Practice<br/>Launch</h3>
+      <p class="tagline">Everything to get your new practice off the ground</p>
+    </div>
+
+    <div class="price-block">
+      <div class="price-note">Agency Fee / Month</div>
+      <div class="price-main"><sup>$</sup>1,997<sub>/mo</sub></div>
+      <div class="price-period">× 3 months = $5,991 agency total</div>
+      <div class="price-divider"></div>
+      <div class="ad-spend-row">
+        <span>📣 Recommended Ad Spend:</span>
+        <span class="ad-spend-val">$1,000/mo</span>
+      </div>
+      <div class="ad-note">* Ad spend paid directly to Meta. Not included in agency fee.</div>
+      <div class="total-block">
+        <span class="total-label">3-Mo All-In Est.</span>
+        <span class="total-val">~$8,991</span>
+      </div>
+    </div>
+
+    <div class="card-cta-wrap">
+      <a class="cta-btn" href="/cdn-cgi/l/email-protection#650410025d0402000b061c250208040c094b060a08">Get Started →</a>
+    </div>
+
+    <div class="card-features">
+      <div class="features-label">What's Included</div>
+      <div class="feat-section-title">🌐 Website</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-check">✓</span>Custom dental website (up to 8 pages)</li>
+        <li><span class="icon icon-check">✓</span>Domain + hosting setup</li>
+        <li><span class="icon icon-check">✓</span>Mobile-first, SEO-ready design</li>
+        <li><span class="icon icon-check">✓</span>Appointment request form</li>
+      </ul>
+      <div class="section-divider"></div>
+      <div class="feat-section-title">📣 Meta Ads</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-check">✓</span>1 Meta ad campaign setup</li>
+        <li><span class="icon icon-check">✓</span>Local zip-code targeting</li>
+        <li><span class="icon icon-check">✓</span>Monthly performance report</li>
+      </ul>
+      <div class="section-divider"></div>
+      <div class="feat-section-title">⚡ Lead Alerts</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-star">⚡</span>5-Minute lead alert system</li>
+        <li><span class="icon icon-check">✓</span>Auto-call to front desk</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══ CARD 2: PRACTICE ESSENTIALS ══ -->
+  <div class="card tier-2">
+    <div class="card-head">
+      <h3>Practice<br/>Essentials</h3>
+      <p class="tagline">Core marketing every established practice needs</p>
+    </div>
+
+    <div class="price-block">
+      <div class="price-note">Agency Fee / Month</div>
+      <div class="price-main"><sup>$</sup>2,697<sub>/mo</sub></div>
+      <div class="price-period">× 3 months = $8,091 agency total</div>
+      <div class="price-divider"></div>
+      <div class="ad-spend-row">
+        <span>📣 Recommended Ad Spend:</span>
+        <span class="ad-spend-val">$1,500/mo</span>
+      </div>
+      <div class="ad-note">* Ad spend paid directly to Meta. Not included in agency fee.</div>
+      <div class="total-block">
+        <span class="total-label">3-Mo All-In Est.</span>
+        <span class="total-val">~$12,591</span>
+      </div>
+    </div>
+
+    <div class="card-cta-wrap">
+      <a class="cta-btn" href="/cdn-cgi/l/email-protection#9ffeeaf8a7fef8faf1fce6dff8f2fef6f3b1fcf0f2">Get Started →</a>
+    </div>
+
+    <div class="card-features">
+      <div class="features-label">What's Included</div>
+      <div class="feat-section-title">🌐 Website</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-check">✓</span>Website build or full redesign</li>
+        <li><span class="icon icon-check">✓</span>Hosting + ongoing maintenance</li>
+        <li><span class="icon icon-check">✓</span>Google Business Profile setup</li>
+      </ul>
+      <div class="section-divider"></div>
+      <div class="feat-section-title">📣 Meta Ads</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-check">✓</span>2 Meta ad campaigns</li>
+        <li><span class="icon icon-check">✓</span>A/B creative testing</li>
+        <li><span class="icon icon-check">✓</span>Bi-weekly performance reports</li>
+        <li><span class="icon icon-plus">+</span>SMS lead follow-up automation</li>
+      </ul>
+      <div class="section-divider"></div>
+      <div class="feat-section-title">⚡ Lead Alerts + Reputation</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-star">⚡</span>5-Minute lead alert system</li>
+        <li><span class="icon icon-check">✓</span>Call tracking & analytics</li>
+        <li><span class="icon icon-plus">+</span>Reputation / review management</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══ CARD 3: PRACTICE BUILDER (MOST POPULAR) ══ -->
+  <div class="card tier-3 featured">
+    <div class="card-head">
+      <div class="most-popular">⭐ MOST POPULAR</div>
+      <h3>Practice<br/>Builder</h3>
+      <p class="tagline">Serious growth for practices ready to scale fast</p>
+    </div>
+
+    <div class="price-block">
+      <div class="price-note">Agency Fee / Month</div>
+      <div class="price-main"><sup>$</sup>3,497<sub>/mo</sub></div>
+      <div class="price-period">× 3 months = $10,491 agency total</div>
+      <div class="price-divider"></div>
+      <div class="ad-spend-row">
+        <span>📣 Recommended Ad Spend:</span>
+        <span class="ad-spend-val">$2,500/mo</span>
+      </div>
+      <div class="ad-note">* Ad spend paid directly to Meta. Not included in agency fee.</div>
+      <div class="total-block">
+        <span class="total-label">3-Mo All-In Est.</span>
+        <span class="total-val">~$17,991</span>
+      </div>
+    </div>
+
+    <div class="card-cta-wrap">
+      <a class="cta-btn" href="/cdn-cgi/l/email-protection#721307154a1315171c110b32151f131b1e5c111d1f">Get Started →</a>
+    </div>
+
+    <div class="card-features">
+      <div class="features-label">Everything in Essentials, Plus:</div>
+      <div class="feat-section-title">📣 Advanced Meta Ads</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-check">✓</span>4 Meta ad campaigns running</li>
+        <li><span class="icon icon-plus">+</span>Advanced retargeting campaigns</li>
+        <li><span class="icon icon-plus">+</span>Lookalike audience targeting</li>
+        <li><span class="icon icon-plus">+</span>Video ad creative included</li>
+        <li><span class="icon icon-check">✓</span>Weekly performance reports</li>
+      </ul>
+      <div class="section-divider"></div>
+      <div class="feat-section-title">🚀 Growth Add-Ons</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-plus">+</span>Competitor conquest ad strategy</li>
+        <li><span class="icon icon-plus">+</span>Bi-weekly strategy calls</li>
+        <li><span class="icon icon-star">⚡</span>Priority 5-min lead alerts</li>
+        <li><span class="icon icon-plus">+</span>Advanced SEO local campaign</li>
+        <li><span class="icon icon-check">✓</span>Full reputation management</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══ CARD 4: MARKET DOMINATOR ══ -->
+  <div class="card tier-4">
+    <div class="card-head">
+      <h3>Market<br/>Dominator</h3>
+      <p class="tagline">Total market control — for practices that want it all</p>
+    </div>
+
+    <div class="price-block">
+      <div class="price-note">Agency Fee / Month</div>
+      <div class="price-main"><sup>$</sup>4,997<sub>/mo</sub></div>
+      <div class="price-period">× 3 months = $14,991 agency total</div>
+      <div class="price-divider"></div>
+      <div class="ad-spend-row">
+        <span>📣 Recommended Ad Spend:</span>
+        <span class="ad-spend-val">$4,000/mo</span>
+      </div>
+      <div class="ad-note">* Ad spend paid directly to Meta. Not included in agency fee.</div>
+      <div class="total-block">
+        <span class="total-label">3-Mo All-In Est.</span>
+        <span class="total-val">~$26,991</span>
+      </div>
+    </div>
+
+    <div class="card-cta-wrap">
+      <a class="cta-btn" href="/cdn-cgi/l/email-protection#5e3f2b39663f393b303d271e39333f3732703d3133">Get Started →</a>
+    </div>
+
+    <div class="card-features">
+      <div class="features-label">Everything in Builder, Plus:</div>
+      <div class="feat-section-title">👑 Full Domination Suite</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-check">✓</span>Unlimited Meta ad campaigns</li>
+        <li><span class="icon icon-plus">+</span>Google Ads (PPC) management</li>
+        <li><span class="icon icon-plus">+</span>Multi-location support</li>
+        <li><span class="icon icon-plus">+</span>Dedicated account manager</li>
+        <li><span class="icon icon-plus">+</span>Weekly 1:1 strategy sessions</li>
+      </ul>
+      <div class="section-divider"></div>
+      <div class="feat-section-title">⚙️ Premium Automation</div>
+      <ul class="feat-list">
+        <li><span class="icon icon-star">⚡</span>24/7 priority lead alert system</li>
+        <li><span class="icon icon-plus">+</span>Full funnel CRM automation</li>
+        <li><span class="icon icon-plus">+</span>Custom analytics dashboard</li>
+        <li><span class="icon icon-plus">+</span>Monthly in-depth strategy review</li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- Bottom note -->
+<div class="bottom-note">
+  <div class="bottom-note-left">
+    <h4>Why a 3-Month Contract?</h4>
+    <p>Meta ads take 4–6 weeks to optimize fully. A 3-month commitment gives our system enough time to learn your market, refine targeting, and deliver consistent, measurable results — not just one good week.</p>
+  </div>
+  <div class="bottom-note-bullets">
+    <div class="note-bullet"><div class="dot"></div>No setup fees</div>
+    <div class="note-bullet"><div class="dot"></div>You own all assets</div>
+    <div class="note-bullet"><div class="dot"></div>Cancel after 3 months</div>
+    <div class="note-bullet"><
